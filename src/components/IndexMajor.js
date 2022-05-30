@@ -4,10 +4,11 @@ class IndexMajor extends React.Component {
   render() {
     return (
       <header className="major">
-        <h2>Newest Uploads</h2>
+        <h2>{this.props.text}</h2>
       </header>
     );
   }
+
 }
 
 export default IndexMajor;

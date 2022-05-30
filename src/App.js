@@ -25,7 +25,7 @@ function App() {
             <div id="main">
               <IndexHeader />
               <IndexSection />
-              <IndexMajor />
+              <IndexMajor text="Newest Uploads" />
               <IndexPosts />
             </div>
             <Sidebar />

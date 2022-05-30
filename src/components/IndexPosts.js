@@ -25,7 +25,7 @@ class IndexPosts extends React.Component {
           </p>
           <ul className="actions">
             <li>
-              <a href="notes.html" className="button">
+              <a href="../module.html" className="button">
                 View
               </a>
             </li>
