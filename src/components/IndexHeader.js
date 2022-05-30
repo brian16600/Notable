@@ -2,6 +2,7 @@ import React from "react";
 import smalllogo from './images/smalllogo.png'
 
 class IndexHeader extends React.Component {
+  
   render() {
     return (
       <header id="header">

@@ -1,70 +1,85 @@
-# Getting Started with Create React App
+### Level of Achievement:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Apollo
 
-## Available Scripts
+### Project Scope:
 
-In the project directory, you can run:
+Notable will be a web application with databases of user profiles and notes. We will be using React, JavaScript, HTML and CSS to develop the web interface of Notable. While the backend and databases of user profiles and notes will be created and managed using Firebase. This will aid the incorporation of the following core features to the Notable web application:
 
-### `npm start`
+1. "Uploading and downloading of notes",
+2. “Search by module code tag or by note title”,
+3. “Create user profiles”,
+4. “Sign in to a user profile” and
+5. "Search for a user"
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+All of this will be made available through an appealing, user-friendly interface.
+Notable is also intended to be usable by as many students as possible. Since users can simply search for notes by their titles (or by module code for convenience!), notes of practically any subject matter can be uploaded onto Notable for others to view. This means that while Notable is ideal for use by NUS students, it is certainly not restricted to the context of NUS.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Project Description:
 
-### `npm test`
+Notable is a web application supported by a database of user profiles and notes.
+Notable will have a user interface that allows students to browse through seniors’ notes, to help aid their understanding of module content or to get inspired by them, to create their own notes that might then benefit their juniors. These functions are achieved through the core features mentioned below.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Project Motivation:
 
-### `npm run build`
+Oftentimes when students are reading lecture slides, they might get ‘stuck’ at certain points when they are unable to make the connections between the steps taken by the professor in the slides. This might then require them to spend large amounts of time searching for answers online to try and figure out the crucial step or inference that is skipped in the lecture notes. Oftentimes this also ends up being a stepping off point where students give up because they haven’t been able to find the answers. Some students might turn to advice from their fellow students in the module or from experienced seniors/TAs, with some even obtaining summary notes from their seniors to ensure the module content is more digestible. This got us thinking about the opportunity to create an application to facilitate this process.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+We realized that the university is filled with seniors who have been through the same experience that their juniors are struggling with and best of all, they probably have the missing puzzle piece that we desperately need, in order to understand the lecture content. Furthermore, some TAs may also prepare their own self-made notes for their students and wish to share those with them. Hence, we created Notable.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Project aim:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Notable aims to simplify the process of learning by making it easier to find notes from seniors who have taken the same module and by making these notes easily accessible to students. We also aim to entice seniors to share their notes on this platform, so that the juniors can benefit from it and subsequently be keen on sharing their notes for the future batches of students.
 
-### `npm run eject`
+### Proposed core features:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. **Search by module code**
+2. **Uploading of notes & tagging of notes using module code**
+3. **Storage & hosting of notes on web server**
+4. **User Profiles** - _Each user will have a profile, containing information regarding all the notes they’ve contributed_
+5. **Accomplishment badges** - _To encourage users to contribute notes to Notable and is awarded to users for different levels of contributions_
+6. **Rate & Review system** - _To allow students to rate and review notes that they've browsed, using a star review system and a comment feature_
+7. **Refined Search** - _To allow users to search by most popular notes_
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### User stories:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. As a junior who has difficulty understanding certain topics in a module I am taking, I want to be able to fill in the gaps in my knowledge with notes from seniors who have aced those topics.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+2. As a junior who is too shy to ask my seniors for the notes that they have made, I can search for notes from other seniors through Notable so that I can still obtain reliable notes to refer to, to clarify my doubts.
 
-## Learn More
+3. As a junior making my own notes, I can browse through notes from seniors on Notable, so that I can have a better understanding of key concepts or how to structure my own notes so that I can further my learning.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+4. As a junior, I can search and preview notes for a module amongst various submissions to find the one that best suits my learning needs, so that I can further my understanding
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+5. As a junior who is trying to revise for a module’s exams, I can view summary notes from seniors who have done the exam preparations previously, so that I can ensure I have not missed out any content and ace the exam.
 
-### Code Splitting
+6. As a senior who has aced a module, I can submit my notes to Notable so that I can contribute to future batches taking the module.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+7. As a senior who has completed modules and is taking more modules in the future, I can contribute my notes to Notable, so that I can contribute to a positive cycle, knowing that others may do the same for my future modules.
 
-### Analyzing the Bundle Size
+8. As a TA trying to teach my students, I want to be able to access other notes to share with my students so that I can teach them better, using information from different interpretations of the same content.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+9. As a TA trying to teach my students, I can access other notes on Notable to value add to my current notes that I intend on giving to my students so that they can learn better.
 
-### Making a Progressive Web App
+10. As a TA, I can upload my own lesson notes to Notable, for all students (including those outside my tutelage) to view and refer to, in their learning
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Project design:
 
-### Advanced Configuration
+**Model View Controller (MVC) design:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+1. Controller captures mouse clicks and input from the user
+2. This information is sent to the Model/Main which pulls from the Database and determines the next logic/action will be.
+3. The View will display the new updated UI to the user.
 
-### Deployment
+**Components we need to include:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+1. Main
+2. UI
+3. Logic
+4. Database
 
-### `npm run build` fails to minify
+### Project plan:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Components (Main, UI, Logic, Database) are fully functional by 25 June.
+2. Basic funcitionality including Search, Upload, Download to be available by 25 June.
+3. Integrate User Profiles and Rate & Review System into the implementation by 20 July.
+4. Proper testing of each newly added feature throughout the process to ensure it works.
