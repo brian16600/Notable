@@ -8,6 +8,35 @@ class IndexHeader extends React.Component {
         <a href="index.html" className="logo">
           <img src={smalllogo} />
         </a>
+        <div>
+        <h3> Register New User </h3>
+        <input
+          placeholder="Email"
+        />
+        <input
+          placeholder="Password"
+        />
+
+        <button> Create User</button>
+      </div>
+      <div>
+        <h3> Sign in </h3>
+        <input
+          placeholder="Email"
+        />
+        <input
+          placeholder="Password"
+        />
+
+        <button> Sign in</button>
+      </div>
+
+      <div>
+        <h4> User Logged In: </h4>
+
+        <button> Sign Out </button>
+      </div>
+
         <ul className="icons">
           <li>
             <a href="#" className="icon brands fa-twitter">
