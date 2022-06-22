@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import {createUserWithEmailAndPassword,
         signInWithEmailAndPassword,
         onAuthStateChanged,
@@ -13,9 +13,9 @@ function Authentication() {
 
   const [user, setUser] = useState({});
 
-  onAuthStateChanged(auth, (currentUser) => {
-    setUser(currentUser);
-  });
+  React.useEffect(() => {
+    onAuthStateChanged(auth, (currentUser) => setUser(currentUser))
+  },[]);
 
   const register = async () => {
     try {
@@ -48,10 +48,11 @@ function Authentication() {
   };
 
   return(
-      <>
+      <div>
       <div>
         <div>
-          <h3> Register New User </h3>
+          <h2>First time here?</h2>
+          <h2>Register New User below:</h2>
           <input
             placeholder="Email"
             onChange={(event) => {
@@ -68,7 +69,7 @@ function Authentication() {
         </div>
 
         <div>
-          <h3> Sign in </h3>
+          <h2>Sign in:</h2>
           <input
             placeholder="Email"
             onChange={(event) => {
@@ -90,7 +91,7 @@ function Authentication() {
         {user?.email}
         <button onClick={logout}> Sign Out </button>
       </div>
-      </>
+      </div>
   )
 }
 
