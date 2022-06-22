@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 import djikstra from './images/djikstra.png'
 import binary_search_tree from './images/binary_search_tree.png'
 import cs1101s from './images/cs1101s.png'
@@ -25,9 +24,9 @@ class IndexPosts extends React.Component {
           </p>
           <ul className="actions">
             <li>
-              <a href="../module.html" className="button">
+              <Link to="/notes" className="button">
                 View
-              </a>
+              </Link>
             </li>
           </ul>
         </article>
