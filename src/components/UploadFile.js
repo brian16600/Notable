@@ -76,6 +76,7 @@ function UploadFile() {
             likes: [],
           })
             .then(() => {
+              alert("Notes Uploaded!");
               toast("Notes added successfully", { type: "success" });
               setProgress(0);
             })

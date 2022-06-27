@@ -26,7 +26,7 @@ function IndexPosts() {
   */
 
   useEffect(() => {
-    const notesRef = collection(db, "Notes");
+    const notesRef = collection(db, "notes");
     const q = query(notesRef, orderBy("createdAt", "desc"));
     onSnapshot(q, (snapshot) => {
       const notesList = snapshot.docs.map((doc) => ({
@@ -40,91 +40,33 @@ function IndexPosts() {
 
   return (
     <div className="posts">
-      {notesList.map((url) => (
-        <article>
-          <a href={url} className="image">
-            <img src={djikstra} />
-          </a>
-          <h3>{url}</h3>
-          <p>
-            Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore.
-            Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat
-            tempus aliquam.
-          </p>
-        </article>
-      ))}
-      <article>
-        <a href="#" className="image">
-          <img src={djikstra} alt />
-        </a>
-        <h3>Djikstra's Algorithm</h3>
-        <p>
-          Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore.
-          Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat
-          tempus aliquam.
-        </p>
-        <ul className="actions">
-          <li>
-            <Link to="/notes" className="button">
-              View
-            </Link>
-          </li>
-        </ul>
-      </article>
-      <article>
-        <a href="#" className="image">
-          <img src={binary_search_tree} alt />
-        </a>
-        <h3>Binary Search Tree</h3>
-        <p>
-          Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore.
-          Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat
-          tempus aliquam.
-        </p>
-        <ul className="actions">
-          <li>
-            <a href="../notes.html" className="button">
-              View
+      {notesList.map(
+        ({ id, title, description, notesUrl, createdAt, likes }) => (
+          <article>
+            <a className="image">
+              <img src={djikstra} />
             </a>
-          </li>
-        </ul>
-      </article>
-      <article>
-        <a href="#" className="image">
-          <img src={cs1101s} alt />
-        </a>
-        <h3>CS1101S Notes</h3>
-        <p>
-          Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore.
-          Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat
-          tempus aliquam.
-        </p>
-        <ul className="actions">
-          <li>
-            <a href="../notes.html" className="button">
-              View
-            </a>
-          </li>
-        </ul>
-      </article>
-      <article>
-        <a href="#" className="image">
-          <img src={cs2030s} alt />
-        </a>
-        <h3>John's CS2030S Notes</h3>
-        <p>
-          Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore.
-          Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat
-          tempus aliquam.
-        </p>
-        <ul className="actions">
-          <li>
-            <a href="../notes.html" className="button">
-              View
-            </a>
-          </li>
-        </ul>
-      </article>
+            <h3>{title}</h3>
+            <p>{description}</p>
+            <ul className="actions">
+              <li>
+                <Link
+                  to={`/notes/${id}`}
+                  state={{
+                    title: { title },
+                    notesId: { id },
+                    notesUrl: { notesUrl },
+                    description: { description },
+                  }}
+                  className="button"
+                >
+                  View
+                </Link>
+              </li>
+            </ul>
+          </article>
+        )
+      )}
     </div>
   );
 }

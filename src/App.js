@@ -23,35 +23,37 @@ function App() {
       <body className="is-preload">
         <div id="wrapper">
           <div id="main">
-            <IndexHeader />
-            <Router>
-              <Routes>
-                <Route path="/upload" element={<UploadFile />} />
-                <Route path="/authentication" element={<Authentication />} />
-                <Route path="/" element={<IndexSection />} />
-                <Route
-                  path="/module"
-                  element={<ModuleHeader module="CS2040S" />}
-                />
-              </Routes>
+            <div className="inner">
+              <IndexHeader />
+              <Router>
+                <Routes>
+                  <Route path="/upload" element={<UploadFile />} />
+                  <Route path="/authentication" element={<Authentication />} />
+                  <Route path="/" element={<IndexSection />} />
+                  <Route
+                    path="/module"
+                    element={<ModuleHeader module="CS2040S" />}
+                  />
+                </Routes>
 
-              <Routes>
-                <Route
-                  path="/"
-                  element={<IndexMajor text="Newest Uploads" />}
-                />
+                <Routes>
+                  <Route
+                    path="/"
+                    element={<IndexMajor text="Newest Uploads" />}
+                  />
 
-                <Route
-                  path="/module"
-                  element={<IndexMajor text="Highly-Rated Notes" />}
-                />
-              </Routes>
-              <Routes>
-                <Route path="/" element={<IndexPosts />} />
-                <Route path="/module" element={<IndexPosts />} />
-                <Route path="/notes" element={<NotesMain />} />
-              </Routes>
-            </Router>
+                  <Route
+                    path="/module"
+                    element={<IndexMajor text="Highly-Rated Notes" />}
+                  />
+                </Routes>
+                <Routes>
+                  <Route path="/module" element={<IndexPosts />} />
+                  <Route path="/notes/*" element={<NotesMain />} />
+                  <Route path="/" element={<IndexPosts />} />
+                </Routes>
+              </Router>
+            </div>
           </div>
           <Sidebar />
         </div>
