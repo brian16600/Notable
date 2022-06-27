@@ -1,59 +1,60 @@
-import { BrowserRouter as Router, Route, Routes, Outlet } from 'react-router-dom';
-import { useState } from "react";
-import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
-import { storage } from "./firebase-config";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Outlet,
+} from "react-router-dom";
 import "./assets/css/main.css";
 import Authentication from "./components/Authentication";
 import IndexHeader from "./components/IndexHeader";
 import IndexMajor from "./components/IndexMajor";
 import IndexPosts from "./components/IndexPosts";
-import IndexSection from './components/IndexSection';
-import ModuleHeader from './components/ModuleHeader';
-import NotableTitle from './components/NotableTitle';
+import IndexSection from "./components/IndexSection";
+import ModuleHeader from "./components/ModuleHeader";
+import NotableTitle from "./components/NotableTitle";
 import NotesMain from "./components/NotesMain";
-import Sidebar from './components/Sidebar';
+import Sidebar from "./components/Sidebar";
 import UploadFile from "./components/UploadFile";
 
-
 function App() {
-  
-  
-
   return (
-
     <div className="App">
       <NotableTitle />
-      <body class="is-preload">
+      <body className="is-preload">
         <div id="wrapper">
           <div id="main">
-          
             <IndexHeader />
             <Router>
               <Routes>
-                <Route path="/upload" element={ <UploadFile />} /> 
-                <Route path="/authentication" element={ <Authentication />}/>
-                <Route path="/" element={ <IndexSection /> } />
-                <Route path="/module" element={ <ModuleHeader module="CS2040S"/>} />
-
+                <Route path="/upload" element={<UploadFile />} />
+                <Route path="/authentication" element={<Authentication />} />
+                <Route path="/" element={<IndexSection />} />
+                <Route
+                  path="/module"
+                  element={<ModuleHeader module="CS2040S" />}
+                />
               </Routes>
 
               <Routes>
-                <Route path="/" element={ <IndexMajor text="Newest Uploads" />} />
-                
-                <Route path="/module" element={ <IndexMajor text="Highly-Rated Notes"/>} />
+                <Route
+                  path="/"
+                  element={<IndexMajor text="Newest Uploads" />}
+                />
+
+                <Route
+                  path="/module"
+                  element={<IndexMajor text="Highly-Rated Notes" />}
+                />
               </Routes>
               <Routes>
-                <Route path="/" element={ <IndexPosts /> } />
-                <Route path="/module" element= { <IndexPosts /> } />
-                <Route path="/notes" element={ <NotesMain /> } />
+                <Route path="/" element={<IndexPosts />} />
+                <Route path="/module" element={<IndexPosts />} />
+                <Route path="/notes" element={<NotesMain />} />
               </Routes>
             </Router>
           </div>
           <Sidebar />
         </div>
-        
-        
-        
       </body>
     </div>
   );
