@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import {createUserWithEmailAndPassword,
-        signInWithEmailAndPassword,
-        onAuthStateChanged,
-        signOut,} from "firebase/auth";
-import {auth} from "../firebase-config";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+} from "firebase/auth";
+import { auth } from "../firebase-config";
 
 function Authentication() {
   const [registerEmail, setRegisterEmail] = useState("");
@@ -14,8 +16,8 @@ function Authentication() {
   const [user, setUser] = useState({});
 
   React.useEffect(() => {
-    onAuthStateChanged(auth, (currentUser) => setUser(currentUser))
-  },[]);
+    onAuthStateChanged(auth, (currentUser) => setUser(currentUser));
+  }, []);
 
   const register = async () => {
     try {
@@ -47,8 +49,8 @@ function Authentication() {
     await signOut(auth);
   };
 
-  return(
-      <div>
+  return (
+    <div>
       <div>
         <div>
           <h2>First time here?</h2>
@@ -91,8 +93,8 @@ function Authentication() {
         {user?.email}
         <button onClick={logout}> Sign Out </button>
       </div>
-      </div>
-  )
+    </div>
+  );
 }
 
 export default Authentication;

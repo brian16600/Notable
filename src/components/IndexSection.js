@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import student_studying from "./images/student_studying.jpeg";
 
 class IndexSection extends React.Component {
@@ -16,9 +17,9 @@ class IndexSection extends React.Component {
           <p />
           <ul className="actions">
             <li>
-              <a href="#" className="button big">
-                How to use
-              </a>
+              <Link to="/upload" className="button big">
+                Start Uploading
+              </Link>
             </li>
           </ul>
         </div>

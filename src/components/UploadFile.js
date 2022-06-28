@@ -3,7 +3,6 @@ import { Timestamp, collection, addDoc } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { storage, db } from "../firebase-config";
 import { toast } from "react-toastify";
-import { v4 } from "uuid";
 
 function UploadFile() {
   /**scroll to top automatically. Since coming from some

@@ -1,9 +1,4 @@
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Outlet,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./assets/css/main.css";
 import Authentication from "./components/Authentication";
 import IndexHeader from "./components/IndexHeader";

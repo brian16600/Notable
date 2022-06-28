@@ -1,17 +1,16 @@
 import React from "react";
+import IndexActions from "./IndexActions";
 import IndexForm from "./IndexForm";
 import IndexMenu from "./IndexMenu";
-import IndexTopContributors from "./IndexTopContributors";
 import IndexMiniPosts from "./IndexMiniPosts";
-import IndexActions from "./IndexActions";
-import '../assets/css/main.css'
+import IndexTopContributors from "./IndexTopContributors";
+import "../assets/css/main.css";
 
 class Sidebar extends React.Component {
   render() {
     return (
       <div id="sidebar">
         <div className="inner">
-
           <section id="search" className="alt">
             <IndexForm></IndexForm>
           </section>

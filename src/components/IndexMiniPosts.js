@@ -1,10 +1,10 @@
 import React from "react";
-import student1 from './images/student1.jpg'
-import gold_trophy from './images/gold_trophy.jpg'
-import student2 from './images/student2.jpg'
-import silver_trophy from './images/silver_trophy.jpg'
-import student3 from './images/student3.jpg'
-import bronze_trophy from './images/bronze_trophy.jpg'
+import bronze_trophy from "./images/bronze_trophy.jpg";
+import gold_trophy from "./images/gold_trophy.jpg";
+import silver_trophy from "./images/silver_trophy.jpg";
+import student1 from "./images/student1.jpg";
+import student2 from "./images/student2.jpg";
+import student3 from "./images/student3.jpg";
 
 class IndexMiniPosts extends React.Component {
   render() {

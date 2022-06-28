@@ -1,7 +1,6 @@
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
-import React from "react";
-import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { auth, db, storage } from "../firebase-config";
 import no_image from "./images/no_image.png";
 
