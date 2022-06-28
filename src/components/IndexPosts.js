@@ -1,13 +1,9 @@
-import { ref, getDownloadURL, listAll } from "firebase/storage";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import React from "react";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { auth, db, storage } from "../firebase-config";
-import djikstra from "./images/djikstra.png";
-import binary_search_tree from "./images/binary_search_tree.png";
-import cs1101s from "./images/cs1101s.png";
-import cs2030s from "./images/cs2030s.png";
+import no_image from "./images/no_image.png";
 
 function IndexPosts() {
   const [notesList, setNotesList] = useState([]);
@@ -44,7 +40,7 @@ function IndexPosts() {
         ({ id, title, description, notesUrl, createdAt, likes }) => (
           <article>
             <a className="image">
-              <img src={djikstra} />
+              <img src={no_image} />
             </a>
             <h3>{title}</h3>
             <p>{description}</p>
@@ -57,6 +53,7 @@ function IndexPosts() {
                     notesId: { id },
                     notesUrl: { notesUrl },
                     description: { description },
+                    createdAt: { createdAt },
                   }}
                   className="button"
                 >

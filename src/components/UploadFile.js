@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Timestamp, collection, addDoc } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { storage, db } from "../firebase-config";
@@ -6,22 +6,20 @@ import { toast } from "react-toastify";
 import { v4 } from "uuid";
 
 function UploadFile() {
-  /** 
-  const [fileUpload, setFileUpload] = useState(null);
-  const uploadFile = () => {
-    if (fileUpload == null) return;
-    const imageRef = ref(storage, `notes/${fileUpload.name + v4()}`);
-    uploadBytes(imageRef, fileUpload).then(() => {
-      alert("File uploaded");
-    });
-  };
+  /**scroll to top automatically. Since coming from some
+  pages like home, the user will be at the bottom of the page.
   */
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const fileRef = useRef();
 
   const [formData, setFormData] = useState({
     description: "",
     title: "",
     notesUrl: "",
-    createdAt: Timestamp.now().toDate(),
+    createdAt: Timestamp.now().toDate().toISOString().substr(11, 8),
   });
 
   const [progress, setProgress] = useState(0);
@@ -43,6 +41,8 @@ function UploadFile() {
       alert("Please fill all the fields");
       return;
     }
+
+    fileRef.current.value = "";
 
     const storageRef = ref(storage, `/notes/${Date.now()}${formData.notesURl}`);
 
@@ -107,6 +107,7 @@ function UploadFile() {
       <label>Notes</label>
       <input
         type="file"
+        ref={fileRef}
         name="notesUrl"
         onChange={(event) => {
           handleNotesChange(event);

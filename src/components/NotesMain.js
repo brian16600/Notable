@@ -1,10 +1,19 @@
 import React from "react";
+import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import no_image from "./images/no_image.png";
 
 function NotesMain() {
   const location = useLocation();
   const data = location.state;
   console.log(data);
+
+  /**scroll to top automatically. Since coming from some
+  pages like home, the user will be at the bottom of the page.
+  */
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <section>
@@ -12,10 +21,9 @@ function NotesMain() {
         <h1>{data.title.title}</h1>
       </header>
       <span className="image main">
-        <img src="images/djikstra.png" alt />
+        <img src={no_image} alt />
       </span>
-      <h2>Djikstra's algorithm Notes</h2>
-      <h3>uploaded by User1 on: 12/05/2022, 12:00</h3>
+      <h3>uploaded by User1 on: {data.createdAt.createdAt.seconds}</h3>
       <p>{data.description.description}</p>
       <ul className="actions">
         <li>
@@ -23,7 +31,7 @@ function NotesMain() {
             href={data.notesUrl.notesUrl}
             className="button"
             target="_blank"
-            download="CS2040Snotes"
+            download={data.title.title}
           >
             Download
           </a>

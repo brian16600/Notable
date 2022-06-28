@@ -1,5 +1,5 @@
 import React from "react";
-import student_studying from './images/student_studying.jpeg'
+import student_studying from "./images/student_studying.jpeg";
 
 class IndexSection extends React.Component {
   render() {
@@ -8,7 +8,10 @@ class IndexSection extends React.Component {
         <div className="content">
           <header>
             <h1>High quality notes are just a search away.</h1>
-            <p>Get started by typing a module code into the search bar</p>
+            <p>
+              Get started by typing a module code into the search bar - it's
+              that easy!
+            </p>
           </header>
           <p />
           <ul className="actions">
