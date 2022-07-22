@@ -6,7 +6,6 @@ import no_image from "./images/no_image.png";
 function NotesMain() {
   const location = useLocation();
   const data = location.state;
-  console.log(data);
 
   /**scroll to top automatically. Since coming from some
   pages like home, the user will be at the bottom of the page.

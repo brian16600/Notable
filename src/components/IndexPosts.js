@@ -1,35 +1,25 @@
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { auth, db, storage } from "../firebase-config";
 import no_image from "./images/no_image.png";
 
 function IndexPosts() {
   const [notesList, setNotesList] = useState([]);
-  /**
-  useEffect(() => {
-    setNotesList([]);
-    const fileListRef = ref(storage, "notes/");
-    listAll(fileListRef).then((response) => {
-      response.items.forEach((item) => {
-        getDownloadURL(item).then((url) => {
-          setNotesList((prev) => [...prev, url]);
-        });
-      });
-    });
-  }, []);
-  */
+  //const location = useLocation();
+  //const moduleData = location.state;
 
   useEffect(() => {
     const notesRef = collection(db, "notes");
     const q = query(notesRef, orderBy("createdAt", "desc"));
     onSnapshot(q, (snapshot) => {
+      console.log(snapshot.docs[0].get("description"));
+
       const notesList = snapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));
       setNotesList(notesList);
-      console.log(notesList);
     });
   }, []);
 

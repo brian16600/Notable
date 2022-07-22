@@ -20,34 +20,33 @@ function App() {
           <div id="main">
             <div className="inner">
               <IndexHeader />
-              <Router>
-                <Routes>
-                  <Route path="/upload" element={<UploadFile />} />
-                  <Route path="/authentication" element={<Authentication />} />
-                  <Route path="/" element={<IndexSection />} />
-                  <Route
-                    path="/module"
-                    element={<ModuleHeader module="CS2040S" />}
-                  />
-                </Routes>
 
-                <Routes>
-                  <Route
-                    path="/"
-                    element={<IndexMajor text="Newest Uploads" />}
-                  />
+              <Routes>
+                <Route path="/upload" element={<UploadFile />} />
+                <Route path="/authentication" element={<Authentication />} />
+                <Route path="/" element={<IndexSection />} />
+                <Route
+                  path="/module"
+                  element={<ModuleHeader module="CS2040S" />}
+                />
+              </Routes>
 
-                  <Route
-                    path="/module"
-                    element={<IndexMajor text="Highly-Rated Notes" />}
-                  />
-                </Routes>
-                <Routes>
-                  <Route path="/module" element={<IndexPosts />} />
-                  <Route path="/notes/*" element={<NotesMain />} />
-                  <Route path="/" element={<IndexPosts />} />
-                </Routes>
-              </Router>
+              <Routes>
+                <Route
+                  path="/"
+                  element={<IndexMajor text="Newest Uploads" />}
+                />
+
+                <Route
+                  path="/module"
+                  element={<IndexMajor text="Highly-Rated Notes" />}
+                />
+              </Routes>
+              <Routes>
+                <Route path="/module" element={<IndexPosts />} />
+                <Route path="/notes/*" element={<NotesMain />} />
+                <Route path="/" element={<IndexPosts />} />
+              </Routes>
             </div>
           </div>
           <Sidebar />
@@ -55,13 +54,6 @@ function App() {
       </body>
     </div>
   );
-  /*
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/browser.min.js"></script>
-  <script src="assets/js/breakpoints.min.js"></script>
-  <script src="assets/js/util.js"></script>
-  <script src="assets/js/main.js"></script>
-  */
 }
 
 export default App;
