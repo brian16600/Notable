@@ -2,6 +2,7 @@ import {
   BrowserRouter as Router,
   Route,
   Routes,
+  useLocation,
   useNavigate,
 } from "react-router-dom";
 import "./assets/css/main.css";
@@ -22,6 +23,7 @@ function App() {
   const auth = getAuth();
   const user = auth.currentUser;
   const navigate = useNavigate();
+
   useEffect(() => {
     let authToken = sessionStorage.getItem("Auth Token");
 
@@ -44,16 +46,13 @@ function App() {
                 <Route path="/upload" element={<UploadFile />} />
                 <Route path="/authentication" element={<Authentication />} />
                 <Route path="/" element={<IndexSection />} />
-                <Route
-                  path="/module/*"
-                  element={<ModuleHeader module="" />}
-                />
+                <Route path="/module/*" element={<ModuleHeader module="" />} />
               </Routes>
 
               <Routes>
                 <Route
                   path="/module/*"
-                  element={<IndexMajor text="Highly-Rated Notes" />}
+                  element={<IndexMajor text="Search Results:" />}
                 />
                 <Route
                   path="/"

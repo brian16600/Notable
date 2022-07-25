@@ -11,7 +11,6 @@ function IndexPosts() {
   useEffect(() => {
     const notesRef = collection(db, "notes");
     const q = query(notesRef, orderBy("createdAt", "desc"));
-    console.log(location.pathname.toString());
     if (location.pathname.toString().includes("module")) {
       onSnapshot(q, (snapshot) => {
         const moduleCode = location.state.moduleCode.entry
