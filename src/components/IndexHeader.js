@@ -9,7 +9,15 @@ class IndexHeader extends React.Component {
         <a href="index.html" className="logo">
           <img src={smalllogo} />
         </a>
-        <ul className="icons">
+      </header>
+    );
+  }
+}
+
+export default IndexHeader;
+
+/*
+<ul className="icons">
           <li>
             <a href="#" className="icon brands fa-twitter">
               <span className="label">Twitter</span>
@@ -36,9 +44,4 @@ class IndexHeader extends React.Component {
             </a>
           </li>
         </ul>
-      </header>
-    );
-  }
-}
-
-export default IndexHeader;
+*/
