@@ -62,7 +62,6 @@ function UploadFile() {
 
       () => {
         getDownloadURL(uploadNotes.snapshot.ref).then((url) => {
-          console.log(url);
           const notesRef = collection(db, "notes");
           addDoc(notesRef, {
             title: formData.title,

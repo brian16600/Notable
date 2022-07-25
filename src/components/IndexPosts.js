@@ -22,7 +22,6 @@ function IndexPosts() {
           const doc = snapshot.docs[i];
           const docTitle = doc.get("title");
           const docModuleCode = doc.get("moduleCode");
-          console.log(moduleCode);
           if (
             docTitle.toString().toLowerCase().includes(moduleCode) ||
             docModuleCode.toString().toLowerCase().includes(moduleCode) ||

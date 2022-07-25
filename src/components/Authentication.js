@@ -6,8 +6,10 @@ import {
   onAuthStateChanged,
   getAuth,
 } from "firebase/auth";
-import { auth } from "../firebase-config";
+import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+
+import { db } from "../firebase-config";
 
 function Authentication() {
   const [registerEmail, setRegisterEmail] = useState("");
@@ -17,6 +19,10 @@ function Authentication() {
   const navigate = useNavigate();
 
   const [user, setUser] = useState({});
+
+  const userRef = collection(db, "users");
+  const q = query(userRef, orderBy("uid"));
+  const [registeredUser, setRegisteredUser] = useState(false);
 
   React.useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => setUser(currentUser));
@@ -31,7 +37,19 @@ function Authentication() {
           "Auth Token",
           response._tokenResponse.refreshToken
         );
-        navigate("/");
+        const user = auth.currentUser;
+        const userId = user.uid;
+        onSnapshot(q, (snapshot) => {
+          for (let i = 0; i < snapshot.docs.length; i++) {
+            const doc = snapshot.docs[i];
+            const docUid = doc.get("uid");
+            if (docUid === userId) {
+              setRegisteredUser(true);
+            }
+          }
+        });
+        console.log(registeredUser);
+        registeredUser ? navigate("/") : navigate("/setUp");
       })
       .catch((err) => {
         console.log(err.code);
@@ -46,11 +64,22 @@ function Authentication() {
           "Auth Token",
           response._tokenResponse.freshToken
         );
-        navigate("/");
+        const user = auth.currentUser;
+        const userId = user.uid;
+        onSnapshot(q, (snapshot) => {
+          for (let i = 0; i < snapshot.docs.length; i++) {
+            const doc = snapshot.docs[i];
+            const docUid = doc.get("uid");
+            if (docUid === userId) {
+              setRegisteredUser(true);
+            }
+          }
+        });
+        console.log(registeredUser);
+        registeredUser ? navigate("/") : navigate("/setUp");
       })
       .catch((error) => {
         console.log(error.code);
-        const errorMessage = error.message;
       });
   };
 
