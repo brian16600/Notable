@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function IndexForm() {
   const [entry, setEntry] = useState("");
@@ -9,7 +9,7 @@ export default function IndexForm() {
   const handleSubmit = (event) => {
     if (entry !== "") {
       event.preventDefault();
-      navigate("/module/" + entry, { state: { entry } });
+      navigate("/module/" + entry, { state: { moduleCode: { entry } } });
     } else {
       event.preventDefault();
     }
@@ -23,7 +23,7 @@ export default function IndexForm() {
         name="query"
         value={entry}
         onChange={(event) => setEntry(event.target.value)}
-        placeHolder="search"
+        placeholder="search"
       ></input>
     </form>
   );

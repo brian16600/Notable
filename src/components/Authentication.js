@@ -4,14 +4,17 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
+  getAuth,
 } from "firebase/auth";
 import { auth } from "../firebase-config";
+import { useNavigate } from "react-router-dom";
 
 function Authentication() {
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
+  const navigate = useNavigate();
 
   const [user, setUser] = useState({});
 
@@ -19,30 +22,36 @@ function Authentication() {
     onAuthStateChanged(auth, (currentUser) => setUser(currentUser));
   }, []);
 
-  const register = async () => {
-    try {
-      const user = await createUserWithEmailAndPassword(
-        auth,
-        registerEmail,
-        registerPassword
-      );
-      console.log(user);
-    } catch (error) {
-      console.log(error.message);
-    }
+  const auth = getAuth();
+
+  const register = () => {
+    createUserWithEmailAndPassword(auth, registerEmail, registerPassword)
+      .then((response) => {
+        sessionStorage.setItem(
+          "Auth Token",
+          response._tokenResponse.refreshToken
+        );
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log(err.code);
+      });
   };
 
-  const login = async () => {
-    try {
-      const user = await signInWithEmailAndPassword(
-        auth,
-        loginEmail,
-        loginPassword
-      );
-      console.log(user);
-    } catch (error) {
-      console.log(error.message);
-    }
+  const login = () => {
+    signInWithEmailAndPassword(auth, loginEmail, loginPassword)
+      .then((response) => {
+        // Signed in
+        sessionStorage.setItem(
+          "Auth Token",
+          response._tokenResponse.freshToken
+        );
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error.code);
+        const errorMessage = error.message;
+      });
   };
 
   const logout = async () => {

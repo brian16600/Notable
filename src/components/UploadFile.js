@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { Timestamp, collection, addDoc } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { storage, db } from "../firebase-config";
-import { toast } from "react-toastify";
 
 function UploadFile() {
   /**scroll to top automatically. Since coming from some
@@ -17,11 +16,16 @@ function UploadFile() {
   const [formData, setFormData] = useState({
     description: "",
     title: "",
+    moduleCode: "",
     notesUrl: "",
     createdAt: Timestamp.now().toDate().toISOString().substr(11, 8),
   });
 
   const [progress, setProgress] = useState(0);
+
+  const handleModuleCodeChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleTitleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -42,11 +46,8 @@ function UploadFile() {
     }
 
     fileRef.current.value = "";
-
-    const storageRef = ref(storage, `/notes/${Date.now()}${formData.notesURl}`);
-
+    const storageRef = ref(storage, `notes/${formData.notesUrl.name}`);
     const uploadNotes = uploadBytesResumable(storageRef, formData.notesUrl);
-
     uploadNotes.on(
       "state_changed",
       (snapshot) => {
@@ -56,31 +57,32 @@ function UploadFile() {
         setProgress(progressPercent);
       },
       (err) => {
-        console.log(err);
+        console.log(err.code);
       },
-      () => {
-        setFormData({
-          title: "",
-          description: "",
-          notesUrl: "",
-        });
 
+      () => {
         getDownloadURL(uploadNotes.snapshot.ref).then((url) => {
+          console.log(url);
           const notesRef = collection(db, "notes");
           addDoc(notesRef, {
             title: formData.title,
+            moduleCode: formData.moduleCode,
             description: formData.description,
             notesUrl: url,
             createdAt: Timestamp.now().toDate(),
-            likes: [],
           })
             .then(() => {
               alert("Notes Uploaded!");
-              toast("Notes added successfully", { type: "success" });
+              setFormData({
+                description: "",
+                title: "",
+                moduleCode: "",
+                notesUrl: "",
+              });
               setProgress(0);
             })
             .catch((err) => {
-              toast("Error adding Notes", { type: "error" });
+              console.log(err);
             });
         });
       }
@@ -89,6 +91,12 @@ function UploadFile() {
 
   return (
     <div>
+      <label>Module Code</label>
+      <input
+        name="moduleCode"
+        value={formData.moduleCode}
+        onChange={(e) => handleModuleCodeChange(e)}
+      />
       <label>Title</label>
       <input
         name="title"
@@ -112,8 +120,8 @@ function UploadFile() {
           handleNotesChange(event);
         }}
       />
-
       <button onClick={handlePublish}>Upload</button>
+      <div>Progress:{progress}</div>
     </div>
   );
 }
