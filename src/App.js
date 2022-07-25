@@ -1,8 +1,8 @@
 import {
-  BrowserRouter as Router,
+  BrowserRouter,
+  Navigate,
   Route,
   Routes,
-  useLocation,
   useNavigate,
 } from "react-router-dom";
 import "./assets/css/main.css";
@@ -16,23 +16,42 @@ import NotableTitle from "./components/NotableTitle";
 import NotesMain from "./components/NotesMain";
 import Sidebar from "./components/Sidebar";
 import UploadFile from "./components/UploadFile";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { useEffect } from "react";
+import SetUp from "./components/SetUp";
+import { getAuth } from "firebase/auth";
+import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
+import { db } from "./firebase-config";
+import { useEffect, useState } from "react";
 
 function App() {
   const auth = getAuth();
-  const user = auth.currentUser;
   const navigate = useNavigate();
+
+  const userRef = collection(db, "users");
+  const q = query(userRef, orderBy("uid"));
+  const [registeredUser, setRegisteredUser] = useState(false);
 
   useEffect(() => {
     let authToken = sessionStorage.getItem("Auth Token");
-
     if (authToken) {
-      navigate("/");
+      const user = auth.currentUser;
+      const userId = user.uid;
+      onSnapshot(q, (snapshot) => {
+        for (let i = 0; i < snapshot.docs.length; i++) {
+          const doc = snapshot.docs[i];
+          const docUid = doc.get("uid");
+          if (docUid === userId) {
+            setRegisteredUser(true);
+          }
+        }
+      });
+      console.log(registeredUser);
+      registeredUser ? navigate("/") : navigate("/setUp");
+      //navigate("/");
     } else {
       navigate("/authentication");
     }
-  }, []);
+  }, [registeredUser]);
+
   return (
     <div className="App">
       <NotableTitle />
@@ -45,8 +64,11 @@ function App() {
               <Routes>
                 <Route path="/upload" element={<UploadFile />} />
                 <Route path="/authentication" element={<Authentication />} />
-                <Route path="/" element={<IndexSection />} />
                 <Route path="/module/*" element={<ModuleHeader module="" />} />
+                <Route path="/notes/*" element={<IndexSection />} />
+                <Route path="/setUp/*" element={<IndexSection />} />
+                <Route path="/" element={<IndexSection />} />
+                <Route path="*" element={<Navigate to="/" />} />
               </Routes>
 
               <Routes>
@@ -62,6 +84,7 @@ function App() {
               <Routes>
                 <Route path="/module/*" element={<IndexPosts />} />
                 <Route path="/notes/*" element={<NotesMain />} />
+                <Route path="/setUp/*" element={<SetUp />} />
                 <Route path="/" element={<IndexPosts />} />
               </Routes>
             </div>
