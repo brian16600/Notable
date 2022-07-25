@@ -46,7 +46,7 @@ function App() {
                 <Route path="/" element={<IndexSection />} />
                 <Route
                   path="/module/*"
-                  element={<ModuleHeader module="CS2040S" />}
+                  element={<ModuleHeader module="" />}
                 />
               </Routes>
 

@@ -33,13 +33,10 @@ class Sidebar extends React.Component {
             </p>
             <ul className="contact">
               <li className="icon solid fa-envelope">
-                <a href="#">information@untitled.tld</a>
+                <a href="#">brian16600@gmail.com</a>
               </li>
-              <li className="icon solid fa-phone">(000) 000-0000</li>
-              <li className="icon solid fa-home">
-                1234 Somewhere Road #8254
-                <br />
-                Nashville, TN 00000-0000
+              <li className="icon solid fa-envelope">
+                <a href="#">anandhjishnu@gmail.com</a>
               </li>
             </ul>
           </section>
