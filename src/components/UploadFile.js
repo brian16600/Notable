@@ -3,6 +3,8 @@ import { Timestamp, collection, addDoc } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { storage, db } from "../firebase-config";
 
+import "../assets/css/main.css";
+
 function UploadFile() {
   /**scroll to top automatically. Since coming from some
   pages like home, the user will be at the bottom of the page.
@@ -89,39 +91,58 @@ function UploadFile() {
   };
 
   return (
-    <div>
-      <label>Module Code</label>
-      <input
-        name="moduleCode"
-        value={formData.moduleCode}
-        onChange={(e) => handleModuleCodeChange(e)}
-      />
-      <label>Title</label>
-      <input
-        name="title"
-        value={formData.title}
-        onChange={(e) => handleTitleChange(e)}
-      />
+    <>
+      <div class="col">
+        <div class="upload">
+          <label>
+            <h3>Module Code</h3>
+          </label>
+          <input
+            type="text"
+            name="moduleCode"
+            value={formData.moduleCode}
+            onChange={(e) => handleModuleCodeChange(e)}
+          />
+        </div>
+        <div class="upload">
+          <label>
+            <h3>Title</h3>
+          </label>
+          <input
+            type="text"
+            name="title"
+            value={formData.title}
+            onChange={(e) => handleTitleChange(e)}
+          />
+        </div>
 
-      <label>Description</label>
-      <textarea
-        name="description"
-        value={formData.description}
-        onChange={(e) => handleDescriptionChange(e)}
-      />
-
-      <label>Notes</label>
-      <input
-        type="file"
-        ref={fileRef}
-        name="notesUrl"
-        onChange={(event) => {
-          handleNotesChange(event);
-        }}
-      />
-      <button onClick={handlePublish}>Upload</button>
-      <div>Progress:{progress}</div>
-    </div>
+        <div class="upload">
+          <label>
+            <h3>Description</h3>
+          </label>
+          <textarea
+            name="description"
+            value={formData.description}
+            onChange={(e) => handleDescriptionChange(e)}
+          />
+        </div>
+        <div class="upload">
+          <label>
+            <h3>Upload Notes</h3>
+          </label>
+          <input
+            type="file"
+            ref={fileRef}
+            name="notesUrl"
+            onChange={(event) => {
+              handleNotesChange(event);
+            }}
+          />
+          <div>Progress:{progress}</div>
+        </div>
+        <button onClick={handlePublish}>Upload</button>
+      </div>
+    </>
   );
 }
 
