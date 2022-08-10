@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 class IndexMenu extends React.Component {
   render() {
@@ -9,35 +10,15 @@ class IndexMenu extends React.Component {
         </header>
         <ul>
           <li>
-            <a href="index.html">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <a href="generic.html">My Profile</a>
+            <Link to="profile">My Profile</Link>
           </li>
           <li>
-            <span className="opener">History</span>
-            <ul>
-              <li>
-                <a href="#">Download History</a>
-              </li>
-              <li>
-                <a href="#">Upload History</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <span className="opener">View Other Profiles</span>
-            <ul>
-              <li>
-                <a href="#">Rate notes</a>
-              </li>
-              <li>
-                <a href="#">Comment on notes</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">Submit Feedback</a>
+            <a href="https://github.com/brian16600/Notable/issues">
+              Submit Feedback
+            </a>
           </li>
         </ul>
       </nav>

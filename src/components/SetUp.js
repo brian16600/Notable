@@ -67,34 +67,46 @@ export default function SetUp() {
 
   return (
     <div>
-      <label>Name</label>
-      <input
-        name="name"
-        value={formData.name}
-        onChange={(e) => handleNameChange(e)}
-      />
-      <label>Year Of Study</label>
-      <input
-        name="yearOfStudy"
-        value={formData.yearOfStudy}
-        onChange={(e) => handleYearOfStudyChange(e)}
-      />
-
-      <label>Course</label>
-      <input
-        name="course"
-        value={formData.course}
-        onChange={(e) => handleCourseChange(e)}
-      />
-
-      <label>Bio: About You!</label>
-      <textarea
-        name="bio"
-        value={formData.bio}
-        onChange={(e) => handleBioChange(e)}
-      />
-
-      <button onClick={handlePublish}>Upload</button>
+      <h2>
+        It seems that you don't have a profile yet. Let others know more about
+        you!
+      </h2>
+      <div class="upload">
+        <label>Name</label>
+        <input
+          type="text"
+          name="name"
+          value={formData.name}
+          onChange={(e) => handleNameChange(e)}
+        />
+      </div>
+      <div class="upload">
+        <label>Year Of Study</label>
+        <input
+          type="text"
+          name="yearOfStudy"
+          value={formData.yearOfStudy}
+          onChange={(e) => handleYearOfStudyChange(e)}
+        />
+      </div>
+      <div class="upload">
+        <label>Course</label>
+        <input
+          type="text"
+          name="course"
+          value={formData.course}
+          onChange={(e) => handleCourseChange(e)}
+        />
+      </div>
+      <div class="upload">
+        <label>Bio: About You!</label>
+        <textarea
+          name="bio"
+          value={formData.bio}
+          onChange={(e) => handleBioChange(e)}
+        />
+      </div>
+      <button onClick={handlePublish}>Save</button>
     </div>
   );
 }

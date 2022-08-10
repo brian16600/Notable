@@ -48,8 +48,7 @@ function Authentication() {
             }
           }
         });
-        console.log(registeredUser);
-        registeredUser ? navigate("/") : navigate("/setUp");
+        navigate("/setUp");
       })
       .catch((err) => {
         console.log(err.code);
@@ -67,16 +66,16 @@ function Authentication() {
         const user = auth.currentUser;
         const userId = user.uid;
         onSnapshot(q, (snapshot) => {
+          const registered = false;
           for (let i = 0; i < snapshot.docs.length; i++) {
             const doc = snapshot.docs[i];
             const docUid = doc.get("uid");
             if (docUid === userId) {
-              setRegisteredUser(true);
+              registered = true;
             }
           }
         });
-        console.log(registeredUser);
-        registeredUser ? navigate("/") : navigate("/setUp");
+        navigate("/");
       })
       .catch((error) => {
         console.log(error.code);

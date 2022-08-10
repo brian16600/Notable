@@ -14,43 +14,26 @@ import IndexSection from "./components/IndexSection";
 import ModuleHeader from "./components/ModuleHeader";
 import NotableTitle from "./components/NotableTitle";
 import NotesMain from "./components/NotesMain";
+import Profile from "./components/Profile";
+import ProfileHeader from "./components/ProfileHeader";
 import Sidebar from "./components/Sidebar";
 import UploadFile from "./components/UploadFile";
 import SetUp from "./components/SetUp";
-import { getAuth } from "firebase/auth";
-import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
-import { db } from "./firebase-config";
 import { useEffect, useState } from "react";
 
 function App() {
-  const auth = getAuth();
   const navigate = useNavigate();
-
-  const userRef = collection(db, "users");
-  const q = query(userRef, orderBy("uid"));
-  const [registeredUser, setRegisteredUser] = useState(false);
+  const [registered, setRegistered] = useState(false);
+  const [login, setLogin] = useState(false);
 
   useEffect(() => {
     let authToken = sessionStorage.getItem("Auth Token");
     if (authToken) {
-      const user = auth.currentUser;
-      const userId = user.uid;
-      onSnapshot(q, (snapshot) => {
-        for (let i = 0; i < snapshot.docs.length; i++) {
-          const doc = snapshot.docs[i];
-          const docUid = doc.get("uid");
-          if (docUid === userId) {
-            setRegisteredUser(true);
-          }
-        }
-      });
-      console.log(registeredUser);
-      registeredUser ? navigate("/") : navigate("/setUp");
-      //navigate("/");
+      setLogin(true);
     } else {
       navigate("/authentication");
     }
-  }, [registeredUser]);
+  }, login);
 
   return (
     <div className="App">
@@ -66,7 +49,8 @@ function App() {
                 <Route path="/authentication" element={<Authentication />} />
                 <Route path="/module/*" element={<ModuleHeader module="" />} />
                 <Route path="/notes/*" element={<IndexSection />} />
-                <Route path="/setUp/*" element={<IndexSection />} />
+                <Route path="/setUp/*" element={<ProfileHeader />} />
+                <Route path="/profile/*" element={<ProfileHeader />} />
                 <Route path="/" element={<IndexSection />} />
                 <Route path="*" element={<Navigate to="/" />} />
               </Routes>
@@ -85,6 +69,7 @@ function App() {
                 <Route path="/module/*" element={<IndexPosts />} />
                 <Route path="/notes/*" element={<NotesMain />} />
                 <Route path="/setUp/*" element={<SetUp />} />
+                <Route path="/profile/*" element={<Profile />} />
                 <Route path="/" element={<IndexPosts />} />
               </Routes>
             </div>

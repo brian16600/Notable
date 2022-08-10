@@ -1,7 +1,7 @@
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { auth, db, storage } from "../firebase-config";
+import { db } from "../firebase-config";
 import no_image from "./images/no_image.png";
 
 function IndexPosts() {
