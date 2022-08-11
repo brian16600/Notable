@@ -49,9 +49,6 @@ function IndexPosts() {
       {notesList.map(
         ({ id, title, description, notesUrl, createdAt, moduleCode }) => (
           <article>
-            <a className="image">
-              <img src={no_image} />
-            </a>
             <h3>{title}</h3>
             <h3>Module Code: {moduleCode}</h3>
             <p>{description}</p>

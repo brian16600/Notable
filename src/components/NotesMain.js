@@ -19,9 +19,7 @@ function NotesMain() {
       <header className="main">
         <h1>{data.title.title}</h1>
       </header>
-      <span className="image main">
-        <img src={no_image} alt />
-      </span>
+
       <h3>uploaded by User1 on: {data.createdAt.createdAt.seconds}</h3>
       <p>{data.description.description}</p>
       <ul className="actions">

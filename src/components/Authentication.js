@@ -82,53 +82,59 @@ function Authentication() {
       });
   };
 
-  const logout = async () => {
-    await signOut(auth);
-  };
-
   return (
     <div>
       <div>
         <div>
           <h2>First time here?</h2>
           <h2>Register New User below:</h2>
-          <input
-            placeholder="Email"
-            onChange={(event) => {
-              setRegisterEmail(event.target.value);
-            }}
-          />
-          <input
-            placeholder="Password"
-            onChange={(event) => {
-              setRegisterPassword(event.target.value);
-            }}
-          />
-          <button onClick={register}> Create User</button>
+          <div class="registration">
+            <input
+              type="text"
+              placeholder="Email"
+              onChange={(event) => {
+                setRegisterEmail(event.target.value);
+              }}
+            />
+          </div>
+          <div class="registration">
+            <input
+              type="text"
+              placeholder="Password"
+              onChange={(event) => {
+                setRegisterPassword(event.target.value);
+              }}
+            />
+          </div>
+          <div class="registration-button">
+            <button onClick={register}> Create User</button>
+          </div>
         </div>
 
         <div>
           <h2>Sign in:</h2>
-          <input
-            placeholder="Email"
-            onChange={(event) => {
-              setLoginEmail(event.target.value);
-            }}
-          />
-          <input
-            placeholder="Password"
-            onChange={(event) => {
-              setLoginPassword(event.target.value);
-            }}
-          />
-          <button onClick={login}> Sign in</button>
+          <div class="registration">
+            <input
+              type="text"
+              placeholder="Email"
+              onChange={(event) => {
+                setLoginEmail(event.target.value);
+              }}
+            />
+          </div>
+          <div class="registration">
+            <input
+              type="text"
+              placeholder="Password"
+              onChange={(event) => {
+                setLoginPassword(event.target.value);
+              }}
+            />
+          </div>
+          <div class="registration-button">
+            <button onClick={login}> Sign in</button>
+          </div>
         </div>
-      </div>
-
-      <div>
-        <h4> User Logged In: </h4>
-        {user?.email}
-        <button onClick={logout}> Sign Out </button>
       </div>
     </div>
   );
