@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth, signOut } from "firebase/auth";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 
 function Profile() {
@@ -36,35 +36,50 @@ function Profile() {
     }
   }, [profile]);
 
+  const handleSignOut = () => {
+    signOut(auth)
+      .then(() => {
+        navigate("/authentication");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
-    <div class="space-top">
-      <span class="image left">
-        <img src={defaultPic}></img>
-        <table class="alt">
-          <tbody>
-            {profile.map(({ name, course, yearOfStudy, bio, createdAt }) => (
-              <>
-                <tr>
-                  <td>Name:</td>
-                  <td>{name}</td>
-                </tr>
-                <tr>
-                  <td>Course:</td>
-                  <td>{course}</td>
-                </tr>
-                <tr>
-                  <td>Year Of Study:</td>
-                  <td>{yearOfStudy}</td>
-                </tr>
-                <tr>
-                  <td>About Me:</td>
-                  <td>{bio}</td>
-                </tr>
-              </>
-            ))}
-          </tbody>
-        </table>
-      </span>
+    <div class="profile">
+      <div class="space-top">
+        <span class="image left">
+          <img src={defaultPic}></img>
+          <table class="alt">
+            <tbody>
+              {profile.map(({ name, course, yearOfStudy, bio, createdAt }) => (
+                <>
+                  <tr>
+                    <td>Name:</td>
+                    <td>{name}</td>
+                  </tr>
+                  <tr>
+                    <td>Course:</td>
+                    <td>{course}</td>
+                  </tr>
+                  <tr>
+                    <td>Year Of Study:</td>
+                    <td>{yearOfStudy}</td>
+                  </tr>
+                  <tr>
+                    <td>About Me:</td>
+                    <td>{bio}</td>
+                  </tr>
+                </>
+              ))}
+            </tbody>
+          </table>
+        </span>
+      </div>
+      <div class="logout">
+        <button onClick={handleSignOut}>Logout</button>
+      </div>
     </div>
   );
 }

@@ -11,9 +11,7 @@ class Sidebar extends React.Component {
     return (
       <div id="sidebar">
         <div className="inner">
-          <section id="search" className="alt">
-            <IndexForm></IndexForm>
-          </section>
+          <IndexForm></IndexForm>
 
           <IndexMenu></IndexMenu>
 

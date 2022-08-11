@@ -1,8 +1,8 @@
 import {
-  BrowserRouter,
   Navigate,
   Route,
   Routes,
+  useLocation,
   useNavigate,
 } from "react-router-dom";
 import "./assets/css/main.css";
@@ -21,19 +21,43 @@ import UploadFile from "./components/UploadFile";
 import SetUp from "./components/SetUp";
 import { useEffect, useState } from "react";
 
+import {
+  browserSessionPersistence,
+  getAuth,
+  onAuthStateChanged,
+  setPersistence,
+} from "firebase/auth";
+
 function App() {
   const navigate = useNavigate();
-  const [registered, setRegistered] = useState(false);
   const [login, setLogin] = useState(false);
+  const auth = getAuth();
+  const location = useLocation();
 
+  setPersistence(auth, browserSessionPersistence).then(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user && !login) {
+        setLogin(true);
+        navigate("/");
+      } else if (!user && !location.pathname.includes("/authentication")) {
+        navigate("/authentication");
+      }
+    });
+  });
+  /**
   useEffect(() => {
     let authToken = sessionStorage.getItem("Auth Token");
-    if (authToken) {
+    
+    var user = auth.currentUser;
+    console.log(user);
+    if (user) {
       setLogin(true);
+      navigate("/");
     } else {
       navigate("/authentication");
     }
   }, login);
+  */
 
   return (
     <div className="App">
@@ -64,6 +88,7 @@ function App() {
                   path="/"
                   element={<IndexMajor text="Newest Uploads" />}
                 />
+                <Route path="*" />
               </Routes>
               <Routes>
                 <Route path="/module/*" element={<IndexPosts />} />
@@ -71,6 +96,7 @@ function App() {
                 <Route path="/setUp/*" element={<SetUp />} />
                 <Route path="/profile/*" element={<Profile />} />
                 <Route path="/" element={<IndexPosts />} />
+                <Route path="*" />
               </Routes>
             </div>
           </div>

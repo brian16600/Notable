@@ -400,6 +400,25 @@ hr.major {
 
 .space-top {
   margin-top: 30px;
+  width: 100%;
+  height: 500px;
+}
+
+.profile {
+  display: block;
+  height: 700px;
+}
+
+.registration {
+  display: block;
+  width: 30%;
+  margin-top: 20px;
+}
+
+.registration-button {
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }
 
 .align-left {
