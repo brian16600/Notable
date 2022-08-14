@@ -2051,6 +2051,10 @@ ul.pagination {
   cursor: default;
   list-style: none;
   padding-left: 0;
+  margin-left: 40%;
+  display: block;
+  padding-top: 20px;
+  margin-bottom: 50px;
 }
 ul.pagination li {
   display: inline-block;
@@ -2073,6 +2077,7 @@ ul.pagination li > .page {
   min-width: 2em;
   padding: 0 0.5em;
   text-align: center;
+  cursor: pointer;
 }
 ul.pagination li > .page.active {
   background-color: #f56a6a;

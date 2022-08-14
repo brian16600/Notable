@@ -51,7 +51,12 @@ function Authentication() {
         navigate("/setUp");
       })
       .catch((err) => {
-        console.log(err.code);
+        if (error.code === "auth/invalid-email") {
+          alert("Invalid Email!");
+        }
+        if (error.code === "auth/too-many-requests") {
+          alert("Too many tries!");
+        }
       });
   };
 
@@ -79,6 +84,18 @@ function Authentication() {
       })
       .catch((error) => {
         console.log(error.code);
+        if (error.code === "auth/wrong-password") {
+          alert("Wrong Password!");
+        }
+        if (error.code === "auth/invalid-email") {
+          alert("Invalid Email!");
+        }
+        if (error.code === "auth/user-not-found") {
+          alert("Email not found!");
+        }
+        if (error.code === "auth/too-many-requests") {
+          alert("Too many tries!");
+        }
       });
   };
 
