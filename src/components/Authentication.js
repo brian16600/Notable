@@ -51,10 +51,10 @@ function Authentication() {
         navigate("/setUp");
       })
       .catch((err) => {
-        if (error.code === "auth/invalid-email") {
+        if (err.code === "auth/invalid-email") {
           alert("Invalid Email!");
         }
-        if (error.code === "auth/too-many-requests") {
+        if (err.code === "auth/too-many-requests") {
           alert("Too many tries!");
         }
       });
